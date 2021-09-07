@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
-requirements = []
+install_requires = ["numpy", "pandas", "tensorflow", "matplotlib"]
 
 setup_requirements = []
 develop_requirements = ["ipython", "unittest", "ipdb", "black", "pre-commit", "watchdog", "sphinx", "coverage",
@@ -23,7 +23,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     description="Jingwei AI Kit for AI exploration and development.",
-    install_requires=requirements,
+    install_requires=install_requires,
     long_description=readme,
     include_package_data=True,
     keywords="jaikit",

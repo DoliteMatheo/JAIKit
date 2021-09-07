@@ -131,3 +131,4 @@ dmypy.json
 # others
 /temp
 .idea
+.DS_Store
