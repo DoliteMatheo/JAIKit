@@ -27,15 +27,15 @@ import bisect
 
 import pandas as pd
 
-df = pd.read_pickle("jaikit/character/unicode_info.pkl")
+WIKI_UNICODE_INFO = pd.read_pickle("jaikit/character/unicode_info.pkl")
 
-breakpoints = df["start"]
-section_indexes = list(range(-1, len(df["start"])))
+breakpoints = WIKI_UNICODE_INFO["start"]
+section_indexes = list(range(-1, len(WIKI_UNICODE_INFO["start"])))
 
 
 def character_unicode_info(character: str):
     unicode_ord: int = ord(character)
-    info = df.iloc[section_indexes[bisect.bisect(breakpoints, unicode_ord)]]
+    info = WIKI_UNICODE_INFO.iloc[section_indexes[bisect.bisect(breakpoints, unicode_ord)]]
     if pd.isna(info["平面"]):
         raise ValueError("不是Unicode字符")
     else:
