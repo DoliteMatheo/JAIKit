@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
-install_requires = ["numpy", "pandas", "tensorflow", "matplotlib"]
+install_requires = ["numpy", "pandas"]
 
 setup_requirements = []
 develop_requirements = ["ipython", "unittest", "ipdb", "black", "pre-commit", "watchdog", "sphinx", "coverage",
@@ -35,4 +35,5 @@ setup(
     url="https://github.com/DoliteMatheo/JAIKit.git",
     version="0.0.3",
     zip_safe=False,
+    extras_require={"plot": ["tensorflow", "matplotlib"]}
 )

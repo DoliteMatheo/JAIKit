@@ -27,7 +27,7 @@ import bisect
 
 import pandas as pd
 
-WIKI_UNICODE_INFO = pd.read_pickle("jaikit/character/unicode_info.pkl")
+WIKI_UNICODE_INFO = pd.read_pickle("jaikit/data/unicode_info.pkl")
 
 breakpoints = WIKI_UNICODE_INFO["start"]
 section_indexes = list(range(-1, len(WIKI_UNICODE_INFO["start"])))

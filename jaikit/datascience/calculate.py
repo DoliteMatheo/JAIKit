@@ -18,4 +18,3 @@ def calc_idf(word: str, all_docs: List[str]) -> float:
     """计算某个word相对于多篇文章的IDF值"""
     idf = math.log(len(all_docs) / (1 + len([doc for doc in all_docs if word in doc])))
     return idf
-
