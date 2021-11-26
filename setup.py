@@ -5,11 +5,20 @@ from setuptools import find_packages, setup
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
-install_requires = ["numpy", "pandas"]
+install_requires = ["numpy"]
 
 setup_requirements = []
-develop_requirements = ["ipython", "unittest", "ipdb", "black", "pre-commit", "watchdog", "sphinx", "coverage",
-                        "sphinx-rtd-theme"]
+develop_requirements = [
+    "ipython",
+    "unittest",
+    "ipdb",
+    "black",
+    "pre-commit",
+    "watchdog",
+    "sphinx",
+    "coverage",
+    "sphinx-rtd-theme",
+]
 test_requirements = []
 
 setup(
@@ -35,5 +44,5 @@ setup(
     url="https://github.com/DoliteMatheo/JAIKit.git",
     version="0.0.4",
     zip_safe=False,
-    extras_require={"plot": ["tensorflow", "matplotlib"]}
+    extras_require={"plot": ["tensorflow", "matplotlib"], "unicode": ["pandas"]},
 )
