@@ -1,11 +1,14 @@
 """
 车万翔书P24最大正向匹配算法
 """
+import os
 from typing import List
+
+from jaikit.config import PACKAGE_PATH
 
 LEXICON = set()
 MAX_LEN = 0
-with open("jaikit/data/lexicon.txt") as f:
+with open(os.path.join(PACKAGE_PATH, "data/lexicon.txt")) as f:
     for line in f.readlines():
         word = line.strip()
         LEXICON.add(word)
