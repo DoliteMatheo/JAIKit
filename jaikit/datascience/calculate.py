@@ -68,3 +68,32 @@ def calc_precision_recall_f1(
     recall = tp / (tp + fn)
     f1 = 2 / (1 / precision + 1 / recall)
     return precision, recall, f1
+
+
+def calc_norm_vectors(vectors: Iterable[Iterable[float]]) -> np.ndarray:
+    """
+    将多个向量进行长度归一化，返回同形状的向量矩阵
+    :param vectors: 含多个向量的矩阵，形状为(向量个数, 向量维度)
+    :return: 与vectors同形状的矩阵，其中每一行向量的欧氏长度均为1
+    """
+    vectors = np.array(vectors)
+    return (
+        np.transpose(
+            np.broadcast_to(
+                1 / np.linalg.norm(vectors, axis=1), np.array(vectors).shape[::-1]
+            )
+        )
+        * vectors
+    )
+
+
+def check_array_equal(arr1: Iterable, arr2: Iterable, precision: float = 1e-6) -> bool:
+    """在一定的float精度范围内，检查两个array是否完全相等，注意对于均为float('nan')的两个元素，认为不相等"""
+    arr1, arr2 = np.array(arr1), np.array(arr2)
+    if arr1.shape != arr2.shape:
+        return False
+    arr1, arr2 = arr1.flatten(), arr2.flatten()
+    for i, j in zip(arr1, arr2):
+        if not math.isclose(float(i), float(j), rel_tol=precision):
+            return False
+    return True
